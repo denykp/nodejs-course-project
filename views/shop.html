@@ -4,11 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add Product</title>
+    <link rel="stylesheet" href="/css/main.css" />
+
+    <script type="text/javascript">
+      // use DOMContentLoaded or put the script on the bottom of body tag
+      document.addEventListener("DOMContentLoaded", function () {
+        let count = 0;
+        function counter() {
+          count++;
+          document.getElementById("display-count").innerHTML = count;
+        }
+
+        let buttonCount = document
+          .getElementById("button-count")
+          .addEventListener("click", counter);
+      });
+    </script>
   </head>
   <body>
     <header>
-      <nav>
-        <ul>
+      <nav class="header-nav">
+        <ul class="header-nav-list">
           <li><a href="/">Shop</a></li>
           <li><a href="/admin/add-product">Add Product</a></li>
         </ul>
@@ -17,6 +33,9 @@
     <main>
       <h1>My Products</h1>
       <p>list of products</p>
+      <button id="button-count" type="button">
+        Counter <span id="display-count">0</span>
+      </button>
     </main>
   </body>
 </html>
