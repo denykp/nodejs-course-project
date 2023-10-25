@@ -6,21 +6,26 @@ body {
 }
 .header-nav-list {
   margin: 0;
-  background-color: rgb(0, 132, 255);
+  padding: 0 30px;
+  background-color: #0084ff;
   display: flex;
   gap: 10px;
   list-style: none;
 }
-.header-nav-list > li {
-  padding: 10px;
+.header-nav-list > .nav-list {
+  height: 30px;
+  min-width: 50px;
 }
-.header-nav-list > li:hover {
-  box-shadow: 0px 0px 10px inset white;
-  border-radius: 10px;
+.header-nav-list > .nav-list:hover {
+  background-color: #3ca1ff;
 }
-.header-nav-list > li > a {
+.header-nav-list > .nav-list > a {
   color: white !important;
   text-decoration: none;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
 }
 
 main {
