@@ -2,7 +2,6 @@ const http = require("http");
 
 const server = http.createServer((req, res) => {
   const fs = require("fs");
-  console.log(req);
   if (req.url === "/") {
     res.write(`<html>`);
     res.write(

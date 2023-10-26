@@ -22,7 +22,12 @@
         <p>list of products</p>
         <ul>
         <% for (const product of products) { %>
-          <li><%= product.title %></li>
+          <li style="margin-bottom: 10px;">
+            <h3 style="margin:0"><%= product.title %></h3>
+            <div>
+              Author: John Doe | Published: 2020
+            </div>
+          </li>
         <% } %>
         </ul>
       <% } else { %>

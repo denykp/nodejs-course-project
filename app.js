@@ -6,8 +6,10 @@ const path = require("path");
 
 const app = express();
 
-const { routes: adminRoutes } = require("./routes/admin");
+const adminRoutes = require("./routes/admin");
 const shopRoutes = require("./routes/shop");
+
+const { error404 } = require("./controllers/errors");
 
 app.set("view engine", "ejs");
 app.set("views", "views");
@@ -18,8 +20,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/admin", adminRoutes);
 app.use(shopRoutes);
 
-app.use((_, res) => {
-  res.status(404).render("404", { pageTitle: "Page not found" });
-});
+app.use(error404);
 
 app.listen(3001);
