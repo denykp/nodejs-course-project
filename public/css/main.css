@@ -29,6 +29,94 @@ body {
 }
 
 main {
-  padding-left: 50px;
-  padding-right: 50px;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.form-input {
+  display: block;
+  margin-bottom: 5px;
+}
+.form-input > .label {
+  font-weight: 600;
+  font-size: 14px;
+}
+.input-wrapper {
+  border: #323232 1px solid;
+  border-radius: 4px;
+  padding: 1px 5px 2px 5px;
+}
+.input-wrapper:focus-within {
+  border: #0084ff 1px solid;
+}
+.input-wrapper > input {
+  height: 100%;
+  outline: none;
+  border: none;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.action-right {
+  margin-top: 10px;
+  display: flex;
+  justify-content: right;
+}
+
+button {
+  outline: none;
+  border: none;
+  outline: #0084ff 1px solid;
+  background-color: white;
+  color: #0084ff;
+  border-radius: 4px;
+  padding: 3px 15px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #0084ff;
+  color: white;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.product-card {
+  width: 150px;
+  border: 1px solid rgb(200, 200, 200);
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  overflow: hidden;
+  color: rgb(42, 42, 42);
+}
+.product-card > .preview {
+  height: 150px;
+}
+.product-card > .preview > img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.product-card > .text {
+  padding: 0 5px;
+  margin: 5px 0
+}
+.product-card > .text > .title {
+  font-size: 16px;
+  /* font-weight: bold; */
+}
+.product-card > .text > .price {
+  font-size: 14px;
+  font-weight: bold;
 }

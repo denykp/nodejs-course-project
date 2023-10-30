@@ -7,8 +7,11 @@ const filePath = path.join(
 );
 
 module.exports = class Product {
-  constructor(title) {
+  constructor(title, author, year, price) {
     this.title = title;
+    this.author = author;
+    this.year = year;
+    this.price = price;
   }
 
   save() {

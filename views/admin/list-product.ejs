@@ -1,4 +1,4 @@
-<%- include('includes/head.ejs') %>
+<%- include('../includes/head.ejs') %>
     <script type="text/javascript">
       // use DOMContentLoaded or put the script on the bottom of body tag
       document.addEventListener("DOMContentLoaded", function () {
@@ -15,21 +15,22 @@
     </script>
   </head>
   <body>
-    <%- include('includes/nav.ejs') %>
+    <%- include('../includes/nav.ejs') %>
     <main>
       <h1>My Products</h1>
       <% if(products.length) { %>
-        <p>list of products</p>
-        <ul>
+        <div>
         <% for (const product of products) { %>
-          <li style="margin-bottom: 10px;">
+          <div style="margin-bottom: 10px;">
+            <img src="https://img.freepik.com/free-photo/book-library-with-open-textbook_1150-5921.jpg" alt="<%= product.title %>">
             <h3 style="margin:0"><%= product.title %></h3>
-            <div>
+            <div><%= product.price %></div>
+            <!-- <div>
               Author: John Doe | Published: 2020
-            </div>
-          </li>
+            </div> -->
+          </div>
         <% } %>
-        </ul>
+        </div>
       <% } else { %>
         <span>Currently there is no product to display</span>
       <% } %>

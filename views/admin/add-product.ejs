@@ -1,0 +1,40 @@
+<%- include('../includes/head.ejs') %>
+</head>
+
+<body>
+  <%- include('../includes/nav.ejs') %>
+  <main style="display: flex;gap: 50px;">
+    <img src="https://img.freepik.com/free-photo/book-library-with-open-textbook_1150-5921.jpg" alt="book-image" width="300px" style="border-radius: 5px;">
+    <form action="/admin/add-product" method="post" style="width: 100%;">
+      <label class="form-input">
+        <div class="label">Title</div>
+        <div class="input-wrapper">
+          <input type="text" name="title" />
+        </div>
+      </label>
+      <label class="form-input">
+        <div class="label">Author</div>
+        <div class="input-wrapper">
+          <input type="text" name="author" />
+        </div>
+      </label>
+      <label class="form-input">
+        <div class="label">Year</div>
+        <div class="input-wrapper">
+          <input type="text" name="year" />
+        </div>
+      </label>
+      <label class="form-input">
+        <div class="label">Price</div>
+        <div class="input-wrapper">
+          <input type="number" name="price" />
+        </div>
+      </label>
+      <div class="action-right">
+        <button type="submit">Add Product</button>
+      </div>
+    </form>
+  </main>
+</body>
+
+</html>
