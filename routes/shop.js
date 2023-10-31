@@ -5,9 +5,14 @@ const express = require("express");
 
 const router = express.Router();
 
-const { getProduct, getCart } = require("../controllers/shop");
+const {
+  getProduct,
+  getCart,
+  getProductDetail,
+} = require("../controllers/shop");
 
 router.get("/", getProduct);
 router.get("/cart", getCart);
+router.get("/product/:id", getProductDetail);
 
 module.exports = router;

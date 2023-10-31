@@ -6,7 +6,7 @@ body {
 }
 .header-nav-list {
   margin: 0;
-  padding: 0 30px;
+  padding: 0 10%;
   background-color: #0084ff;
   display: flex;
   gap: 10px;
@@ -16,7 +16,7 @@ body {
   height: 30px;
   min-width: 50px;
 }
-.header-nav-list > .nav-list:hover {
+.header-nav-list > .nav-list:hover,.active {
   background-color: #3ca1ff;
 }
 .header-nav-list > .nav-list > a {
@@ -64,7 +64,7 @@ main {
   justify-content: right;
 }
 
-button {
+button,.btn {
   outline: none;
   border: none;
   outline: #0084ff 1px solid;
@@ -73,10 +73,19 @@ button {
   border-radius: 4px;
   padding: 3px 15px;
   cursor: pointer;
+  text-decoration: none;
+  min-width: 75px;
 }
-button:hover {
+button:hover,.btn:hover {
   background-color: #0084ff;
   color: white;
+}
+.btn-red {
+  color: #ff4444;
+  outline: #ff4444 1px solid;
+}
+.btn-red:hover {
+  background-color: #ff4444;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -99,6 +108,7 @@ input[type=number] {
   text-align: center;
   overflow: hidden;
   color: rgb(42, 42, 42);
+  text-decoration: none;
 }
 .product-card > .preview {
   height: 150px;
@@ -119,4 +129,14 @@ input[type=number] {
 .product-card > .text > .price {
   font-size: 14px;
   font-weight: bold;
+}
+
+.product-list-card {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 30px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  align-items: center;
+  cursor: pointer;
 }

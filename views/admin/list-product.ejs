@@ -1,44 +1,53 @@
 <%- include('../includes/head.ejs') %>
-    <script type="text/javascript">
-      // use DOMContentLoaded or put the script on the bottom of body tag
-      document.addEventListener("DOMContentLoaded", function () {
-        let count = 0;
-        function counter() {
-          count++;
-          document.getElementById("display-count").innerHTML = count;
-        }
+<script type="text/javascript">
+  // use DOMContentLoaded or put the script on the bottom of body tag
+  document.addEventListener("DOMContentLoaded", function() {
+    let count = 0;
 
-        let buttonCount = document
-          .getElementById("button-count")
-          .addEventListener("click", counter);
-      });
-    </script>
-  </head>
-  <body>
-    <%- include('../includes/nav.ejs') %>
-    <main>
-      <h1>My Products</h1>
-      <% if(products.length) { %>
-        <div>
-        <% for (const product of products) { %>
-          <div style="margin-bottom: 10px;">
-            <img src="https://img.freepik.com/free-photo/book-library-with-open-textbook_1150-5921.jpg" alt="<%= product.title %>">
-            <h3 style="margin:0"><%= product.title %></h3>
-            <div><%= product.price %></div>
-            <!-- <div>
-              Author: John Doe | Published: 2020
-            </div> -->
+    function counter() {
+      count++;
+      document.getElementById("display-count").innerHTML = count;
+    }
+
+    let buttonCount = document
+      .getElementById("button-count")
+      .addEventListener("click", counter);
+  });
+</script>
+</head>
+
+<body>
+  <%- include('../includes/nav.ejs') %>
+  <main>
+    <h1>My Products</h1>
+    <% if(products.length) { %>
+    <div>
+      <% for (const product of products) { %>
+      <div class="product-list-card">
+        <img src="https://img.freepik.com/free-photo/book-library-with-open-textbook_1150-5921.jpg" alt="book-image" width="150px">
+        <div style="width: 100%;">
+          <h3 style="margin-top: 0;"><%= product.title %></h3>
+          <div style="font-weight: bold;"><%= product.price %></div>
+          <div>
+            <%= product.author %>, <%= product.year %>
           </div>
-        <% } %>
         </div>
-      <% } else { %>
-        <span>Currently there is no product to display</span>
-      <% } %>
-      <div style="margin-top: 50px;">
-        <button id="button-count" type="button">
-          Counter <span id="display-count">0</span>
-        </button>
+        <div>
+          <button style="margin-bottom: 10px;">Edit</button>
+          <button class="btn-red">Delete</button>
+        </div>
       </div>
-    </main>
-  </body>
+      <% } %>
+    </div>
+    <% } else { %>
+    <span>Currently there is no product to display</span>
+    <% } %>
+    <div style="margin-top: 50px;">
+      <button id="button-count" type="button">
+        Counter <span id="display-count">0</span>
+      </button>
+    </div>
+  </main>
+</body>
+
 </html>

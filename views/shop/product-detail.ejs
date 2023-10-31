@@ -1,0 +1,24 @@
+<%- include('../includes/head.ejs') %>
+</head>
+
+<body>
+  <%- include('../includes/nav.ejs') %>
+  <main>
+    <h1>Product Details</h1>
+    <div style="display: flex;gap: 50px;">
+      <img src="https://img.freepik.com/free-photo/book-library-with-open-textbook_1150-5921.jpg" alt="book-image" width="300px" style="border-radius: 5px;">
+      <div style="width: 100%;">
+        <h3><%= product.title %></h3>
+        <div style="font-weight: bold;"><%= product.price %></div>
+        <div>
+          <%= product.author %>, <%= product.year %>
+        </div>
+        <div class="action-right">
+          <a href="/cart/<%= product.id %>" class="btn">Add to Cart</a>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>

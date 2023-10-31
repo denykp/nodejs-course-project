@@ -21,20 +21,20 @@
   <main>
     <h1>My Products</h1>
     <% if(products.length) { %>
-    <div>
+    <div style="display: flex;flex-wrap: wrap;gap: 30px;">
       <% for (const product of products) { %>
-      <div class="product-card">
+      <a href="/product/<%= product.id %>" class="product-card">
         <div class="preview">
           <img src="https://img.freepik.com/free-photo/book-library-with-open-textbook_1150-5921.jpg" alt="<%= product.title %>" width="100%">
         </div>
         <div class="text">
           <div class="title"><%= product.title %></div>
           <div class="price"><%= product.price %></div>
-          <div>
+          <!-- <div>
             <%= product.author %>, <%= product.year %>
-          </div>
+          </div> -->
         </div>
-      </div>
+      </a>
       <% } %>
     </div>
     <% } else { %>

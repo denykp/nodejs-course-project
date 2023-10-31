@@ -1,10 +1,10 @@
 <header>
   <nav class="header-nav">
     <ul class="header-nav-list">
-      <li class="nav-list"><a href="/">Shop</a></li>
-      <li class="nav-list"><a href="/cart"> Cart</a></li>
-      <li class="nav-list"><a href="/admin/add-product">Add Product</a></li>
-      <li class="nav-list"><a href="/admin/list-product">List Product</a></li>
+      <li class="nav-list <%= path == '/' ? 'active' : ''%>"><a href="/">Shop</a></li>
+      <li class="nav-list <%= path == '/cart' ? 'active' : ''%>"><a href="/cart"> Cart</a></li>
+      <li class="nav-list <%= path == '/admin/add-product' ? 'active' : ''%>"><a href="/admin/add-product">Add Product</a></li>
+      <li class="nav-list <%= path == '/admin/list-product' ? 'active' : ''%>"><a href="/admin/list-product">List Product</a></li>
     </ul>
   </nav>
 </header>

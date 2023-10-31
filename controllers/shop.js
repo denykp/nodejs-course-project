@@ -9,6 +9,15 @@ exports.getProduct = (_, res) => {
     });
   });
 };
+exports.getProductDetail = (req, res) => {
+  Product.findById(req.params.id, (product) => {
+    res.render("shop/product-detail", {
+      pageTitle: product.name,
+      product: product,
+      path: `/`,
+    });
+  });
+};
 
 exports.getCart = (_, res) => {
   res.render("shop/cart", {
