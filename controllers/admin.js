@@ -9,10 +9,10 @@ exports.getAddProduct = (_, res) => {
 
 exports.postAddProduct = async (req, res) => {
   try {
-    const { title, price, author, year } = req.body;
-    const product = new Product(title, author, year, price);
+    const { id, title, price, author, year } = req.body;
+    const product = new Product(id, title, author, year, price);
     product.save();
-    res.redirect("/");
+    res.redirect("/admin/list-product");
   } catch (error) {
     console.error(error);
   }
@@ -30,4 +30,12 @@ exports.getProduct = (_, res) => {
 
 exports.getEditProduct = (_, res) => {};
 exports.editProduct = (_, res) => {};
-exports.deleteProduct = (_, res) => {};
+exports.deleteProduct = (req, res) => {
+  Product.delete(req.body.id, (products) => {
+    res.render("admin/list-product", {
+      pageTitle: "My Products",
+      products: products,
+      path: "/admin/list-product",
+    });
+  });
+};

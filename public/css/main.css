@@ -74,7 +74,9 @@ button,.btn {
   padding: 3px 15px;
   cursor: pointer;
   text-decoration: none;
-  min-width: 75px;
+  min-width: 75px;;
+  width: fit-content;
+  text-align: center;
 }
 button:hover,.btn:hover {
   background-color: #0084ff;
@@ -138,5 +140,4 @@ input[type=number] {
   border: 1px solid gray;
   border-radius: 5px;
   align-items: center;
-  cursor: pointer;
 }

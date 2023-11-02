@@ -1,25 +1,13 @@
 <%- include('../includes/head.ejs') %>
-<script type="text/javascript">
-  // use DOMContentLoaded or put the script on the bottom of body tag
-  document.addEventListener("DOMContentLoaded", function() {
-    let count = 0;
-
-    function counter() {
-      count++;
-      document.getElementById("display-count").innerHTML = count;
-    }
-
-    let buttonCount = document
-      .getElementById("button-count")
-      .addEventListener("click", counter);
-  });
-</script>
 </head>
 
 <body>
   <%- include('../includes/nav.ejs') %>
   <main>
-    <h1>My Products</h1>
+    <div style="display: flex; justify-content: space-between;align-items: center;">
+      <h1>My Products</h1>
+      <a class="btn" style="height: 30px;display: flex;" href=" /admin/add-product"><span style="margin:auto">Add Product</span></a>
+    </div>
     <% if(products.length) { %>
     <div>
       <% for (const product of products) { %>
@@ -32,9 +20,15 @@
             <%= product.author %>, <%= product.year %>
           </div>
         </div>
-        <div>
-          <button style="margin-bottom: 10px;">Edit</button>
-          <button class="btn-red">Delete</button>
+        <div style="display: flex; flex-wrap: wrap;">
+          <form action="/admin/edit-product" method="post">
+            <input type="text" name="id" value="<%= product.id %>" style="display: none;">
+            <button type="submit" style="margin-bottom: 10px;">Edit</button>
+          </form>
+          <form action="/admin/delete-product" method="post">
+            <input type="text" name="id" value="<%= product.id %>" style="display: none;">
+            <button type="submit" class="btn-red">Delete</button>
+          </form>
         </div>
       </div>
       <% } %>
@@ -42,11 +36,6 @@
     <% } else { %>
     <span>Currently there is no product to display</span>
     <% } %>
-    <div style="margin-top: 50px;">
-      <button id="button-count" type="button">
-        Counter <span id="display-count">0</span>
-      </button>
-    </div>
   </main>
 </body>
 

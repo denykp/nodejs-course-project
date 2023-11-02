@@ -7,8 +7,8 @@ const filePath = path.join(
 );
 
 module.exports = class Product {
-  constructor(title, author, year, price) {
-    this.id = null;
+  constructor(id, title, author, year, price) {
+    this.id = id;
     this.title = title;
     this.author = author;
     this.year = year;
@@ -42,6 +42,20 @@ module.exports = class Product {
     Product.fetchAll((products) => {
       const product = products.find((val) => val.id == id);
       callback(product);
+    });
+  }
+
+  static delete(id, callback) {
+    Product.fetchAll((products) => {
+      const idx = products.findIndex((val) => val.id == id);
+      const newList = [...products];
+      if (idx >= 0) {
+        newList.splice(idx, 1);
+      }
+      fs.writeFile(filePath, JSON.stringify(newList), (err) => {
+        if (err) console.error("err", err);
+      });
+      callback(newList);
     });
   }
 };
