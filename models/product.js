@@ -18,10 +18,14 @@ module.exports = class Product {
   save() {
     Product.fetchAll((products) => {
       // const products = [...res];
-      let lastId = Math.max(...products.map((val) => val.id)) || 0;
-      lastId++;
-      products.push({ ...this, id: lastId });
-
+      if (this.id) {
+        const idx = products.findIndex((val) => val.id == this.id);
+        products[idx] = this;
+      } else {
+        let lastId = Math.max(...products.map((val) => val.id)) || 0;
+        lastId++;
+        products.push({ ...this, id: lastId });
+      }
       fs.writeFile(filePath, JSON.stringify(products), (err) => {
         if (err) console.error("err", err);
       });

@@ -4,36 +4,37 @@
 <body>
   <%- include('../includes/nav.ejs') %>
   <main>
-    <h1>My Products</h1>
+    <h1>Edit Product</h1>
     <div style="display: flex;gap: 50px;">
       <img src="https://img.freepik.com/free-photo/book-library-with-open-textbook_1150-5921.jpg" alt="book-image" width="300px" style="border-radius: 5px;">
-      <form action="/admin/add-product" method="post" style="width: 100%;">
+      <form action="<%= isEdit ? '/admin/edit-product' : '/admin/add-product' %>" method="post" style="width: 100%;">
         <label class="form-input">
           <div class="label">Title</div>
           <div class="input-wrapper">
-            <input type="text" name="title" />
+            <input type="text" name="title" value="<%= isEdit ? product.title:'' %>" />
           </div>
         </label>
         <label class="form-input">
           <div class="label">Author</div>
           <div class="input-wrapper">
-            <input type="text" name="author" />
+            <input type="text" name="author" value="<%= isEdit ? product.author:'' %>" />
           </div>
         </label>
         <label class="form-input">
           <div class="label">Year</div>
           <div class="input-wrapper">
-            <input type="text" name="year" />
+            <input type="text" name="year" value="<%= isEdit ? product.year:'' %>" />
           </div>
         </label>
         <label class="form-input">
           <div class="label">Price</div>
           <div class="input-wrapper">
-            <input type="number" name="price" />
+            <input type="number" name="price" value="<%= isEdit ? product.price:'' %>" />
           </div>
         </label>
         <div class="action-right">
-          <button type="submit">Add Product</button>
+          <input style="display: none;" type="text" name="id" value="<%= isEdit ? product.id:'' %>">
+          <button type="submit"><%= isEdit ? 'Updates Product' : 'Add Product'%></button>
         </div>
       </form>
     </div>
