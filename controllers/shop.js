@@ -1,4 +1,5 @@
 const Product = require("../models/product");
+const Cart = require("../models/cart");
 
 exports.getProduct = (_, res) => {
   Product.fetchAll((products) => {
@@ -20,11 +21,18 @@ exports.getProductDetail = (req, res) => {
 };
 
 exports.getCart = (_, res) => {
-  res.render("shop/cart", {
-    pageTitle: "My Cart",
-    // products: products,
-    path: "/cart",
+  Cart.fetchAllDetail((products) => {
+    res.render("shop/cart", {
+      pageTitle: "My Cart",
+      products: products,
+      path: "/cart",
+    });
   });
 };
-exports.postAddChart = (_, res) => {};
-exports.deleteChart = (_, res) => {};
+exports.postAddChart = (req, res) => {
+  const { id, qty } = req.body;
+  const cart = new Cart(id, qty || 1);
+  cart.save();
+  res.redirect("/cart");
+};
+exports.postDelChart = (_, res) => {};

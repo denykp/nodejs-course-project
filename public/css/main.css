@@ -24,7 +24,8 @@ body {
   height: 30px;
   min-width: 50px;
 }
-.header-nav-list > .nav-list:hover,.active {
+.header-nav-list > .nav-list:hover,
+.active {
   background-color: #3ca1ff;
 }
 .header-nav-list > .nav-list > a {
@@ -72,7 +73,8 @@ main {
   justify-content: right;
 }
 
-button,.btn {
+button,
+.btn {
   outline: none;
   border: none;
   outline: #0084ff 1px solid;
@@ -89,7 +91,8 @@ button,.btn {
 a.btn {
   min-width: 45px;
 }
-button:hover,.btn:hover {
+button:hover,
+.btn:hover {
   background-color: #0084ff;
   color: white;
 }
@@ -100,6 +103,10 @@ button:hover,.btn:hover {
 .btn-red:hover {
   background-color: #ff4444;
 }
+button.fit,
+.btn.fit {
+  min-width: unset;
+}
 
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
@@ -109,7 +116,7 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
 }
 
@@ -133,7 +140,7 @@ input[type=number] {
 }
 .product-card > .text {
   padding: 0 5px;
-  margin: 5px 0
+  margin: 5px 0;
 }
 .product-card > .text > .title {
   font-size: 16px;

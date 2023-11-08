@@ -1,11 +1,39 @@
 <%- include('../includes/head.ejs') %>
+<script src="/javascript/numFormat.js"></script>
 </head>
 
 <body>
   <%- include('../includes/nav.ejs') %>
   <main>
     <h1>My Cart</h1>
+    <%  for (const product of products) { %>
+    <div class="product-list-card">
+      <img src="https://img.freepik.com/free-photo/book-library-with-open-textbook_1150-5921.jpg" alt="book-image" width="100px">
+      <div style="width: 100%;">
+        <div style="margin-top: 0; font-size: 16px"><%= product.title %></div>
+        <div class="price" style="font-weight: bold;"><%= product.price %></div>
+      </div>
+      <div style="display: flex;gap: 10px;margin-right: 25px;">
+        <form action="/cart" method="post">
+          <input type="text" name="id" value="<%= product.id %>" style="display: none;">
+          <input type="text" name="qty" value="-1" style="display: none;">
+          <button class="fit">-</button>
+        </form>
+        <div style="font-weight: bold;"><%= product.qty %></div>
+        <form action="/cart" method="post">
+          <input type="text" name="id" value="<%= product.id %>" style="display: none;">
+          <input type="text" name="qty" value="1" style="display: none;">
+          <button class="fit">+</button>
+        </form>
+      </div>
+    </div>
+    <% } %>
   </main>
+  <script>
+    [...document.getElementsByClassName('price')].forEach((priceEl) => {
+      priceEl.innerHTML = `Rp. ${numFormat(priceEl.innerHTML)}`
+    })
+  </script>
 </body>
 
 </html>
