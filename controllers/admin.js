@@ -10,16 +10,17 @@ exports.getAddProduct = (_, res) => {
 exports.postAddProduct = async (req, res) => {
   try {
     const { title, price, author, year } = req.body;
-    const product = new Product(null, title, author, year, price);
-    product.save();
+    req.user.createProduct({ title, author, year, price });
+    // const product = new Product();
+    // product.save();
     res.redirect("/admin/list-product");
   } catch (error) {
     console.error(error);
   }
 };
 
-exports.getProduct = (_, res) => {
-  Product.fetchAll((products) => {
+exports.getProduct = (req, res) => {
+  req.user.getProducts().then((products) => {
     res.render("admin/list-product", {
       pageTitle: "My Products",
       products: products,
@@ -29,7 +30,7 @@ exports.getProduct = (_, res) => {
 };
 
 exports.getEditProduct = (req, res) => {
-  Product.findById(req.params.id, (product) => {
+  Product.findByPk(req.params.id).then((product) => {
     res.render("admin/save-product", {
       pageTitle: `Edit Product | ${product.name}`,
       path: "/admin/edit-product",
@@ -41,20 +42,23 @@ exports.getEditProduct = (req, res) => {
 exports.postEditProduct = async (req, res) => {
   try {
     const { id, title, price, author, year } = req.body;
-    const product = new Product(id, title, author, year, price);
-    product.save();
-    res.status(200).redirect("/admin/list-product");
+    Product.findByPk(id)
+      .then((product) => {
+        product.title = title;
+        product.price = price;
+        product.author = author;
+        product.year = year;
+        return product.save();
+      })
+      .then(() => res.status(200).redirect("/admin/list-product"))
+      .catch((err) => console.log(err));
   } catch (error) {
     console.error(error);
   }
 };
 
 exports.deleteProduct = (req, res) => {
-  Product.delete(req.body.id, (products) => {
-    res.render("admin/list-product", {
-      pageTitle: "My Products",
-      products: products,
-      path: "/admin/list-product",
-    });
-  });
+  Product.destroy({ where: { id: req.body.id } })
+    .then(() => res.redirect("/admin/list-product"))
+    .catch((err) => console.log(err));
 };
