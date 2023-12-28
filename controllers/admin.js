@@ -1,4 +1,5 @@
 const Product = require("../models/product");
+const numFormat = require("../utils/numFormat");
 
 exports.getAddProduct = (_, res) => {
   res.render("admin/save-product", {
@@ -10,7 +11,7 @@ exports.getAddProduct = (_, res) => {
 exports.postAddProduct = async (req, res) => {
   try {
     const { title, price, author, year } = req.body;
-    req.user.createProduct({ title, author, year, price });
+    await req.user.createProduct({ title, author, year, price });
     // const product = new Product();
     // product.save();
     res.redirect("/admin/list-product");
@@ -23,7 +24,10 @@ exports.getProduct = (req, res) => {
   req.user.getProducts().then((products) => {
     res.render("admin/list-product", {
       pageTitle: "My Products",
-      products: products,
+      products: products.map((product) => {
+        product.price = numFormat(product.price || 0);
+        return product;
+      }),
       path: "/admin/list-product",
     });
   });

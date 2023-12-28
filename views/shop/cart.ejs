@@ -6,6 +6,7 @@
   <%- include('../includes/nav.ejs') %>
   <main>
     <h1>My Cart</h1>
+    <% if(products.length) { %>
     <%  for (const product of products) { %>
     <div class="product-list-card">
       <img src="https://img.freepik.com/free-photo/book-library-with-open-textbook_1150-5921.jpg" alt="book-image" width="100px">
@@ -19,15 +20,30 @@
           <input type="text" name="qty" value="-1" style="display: none;">
           <button class="fit">-</button>
         </form>
-        <div style="font-weight: bold;"><%= product.qty %></div>
+        <div style="font-weight: bold;"><%= product.cartItem?.qty %></div>
         <form action="/cart" method="post">
           <input type="text" name="id" value="<%= product.id %>" style="display: none;">
           <input type="text" name="qty" value="1" style="display: none;">
           <button class="fit">+</button>
         </form>
       </div>
+      <div>
+        <form action="/delete-cart" method="post">
+          <input type="text" name="id" value="<%= product.id %>" style="display: none;">
+          <button class="fit btn-red delete-cart">x</button>
+        </form>
+      </div>
     </div>
     <% } %>
+    <% } else { %>
+    <span>Currently there is no product in the cart</span>
+    <% } %>
+    <hr>
+    <div class="action-right">
+      <form action="/create-order" method="post">
+        <button>Checkout Order</button>
+      </form>
+    </div>
   </main>
   <script>
     [...document.getElementsByClassName('price')].forEach((priceEl) => {
