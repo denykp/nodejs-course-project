@@ -107,7 +107,7 @@ exports.getOrder = (req, res) => {
           }),
         };
       }),
-      path: "/cart",
+      path: "/order",
     });
   });
 };
